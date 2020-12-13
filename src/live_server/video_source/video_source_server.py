@@ -1,7 +1,5 @@
-# video_source_server.py
-
 from flask import Flask, render_template, Response
-from hls_server.video_source.camera import VideoCamera
+from live_server.video_source.camera import VideoCamera
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -10,14 +8,14 @@ CORS(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('test.html')
 
 
 def gen(camera):
     while True:
         frame = camera.get_frame()
 
-        yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+        yield b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n'
         # yield (b'Content-Type: video/mp4\r\n\r\n' + frame + b'\r\n\r\n')
 
 

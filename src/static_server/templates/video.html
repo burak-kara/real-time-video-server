@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video</title>
+</head>
+<body>
+<video id="video" width="640" height="480" controls>
+    <source src="{{ url_for('static', filename="output.mp4") }}" type="video/mp4">
+    <!--    <source src="movie.ogg" type="video/ogg">-->
+    Your browser does not support the video tag.
+</video>
+
+<a href="http://127.0.0.1:5000/">home</a><br/>
+
+<button id="snap">Snap Photo</button>
+<canvas id="canvas" width="640" height="480"></canvas>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var video = document.getElementById('video');
+
+    document.getElementById("snap").addEventListener("click", function () {
+        context.drawImage(video, 0, 0, 640, 480);
+    });
+</script>
+</body>
+</html>

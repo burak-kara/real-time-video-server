@@ -1,4 +1,3 @@
-import cv2
 from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
@@ -16,7 +15,7 @@ def add_header(response):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('test.html')
 
 
 # @app.route('/live/stream.m3u8')
