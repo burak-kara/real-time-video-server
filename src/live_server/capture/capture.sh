@@ -1,0 +1,2 @@
+#!/bin/bash
+ffmpeg -f dshow -i video="HD Webcam":audio="Microphone (Realtek(R) Audio)" -profile:v high -pix_fmt yuvj420p -level:v 4.1 -preset veryfast -tune zerolatency -vcodec libx264 -r 25 -b:v 512k -s 640x360 -acodec aac -ac 2 -ab 32k -ar 44100 -f mpegts -flush_packets 0 udp://192.168.1.38:5000
